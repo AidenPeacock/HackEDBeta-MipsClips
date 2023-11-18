@@ -14,6 +14,7 @@ struct Memory{
 // R-TYPE INSTRUCTIONS
 void Xor(Memory& mips, std::string rs, std::string rt, std::string rd){
     mips.regi[rd] = mips.regi[rt]^mips.regi[rs];
+    mips.pc += 1;
 }
 
 
@@ -21,45 +22,55 @@ void addu(Memory& mips, std::string rs, std::string rt, std::string rd){
     uint32_t rs1 = (mips.regi[rs]);
     uint32_t rt1 = (mips.regi[rt]);
     mips.regi[rd] = static_cast<uint32_t>(rs1+rt1);
+    mips.pc += 1;
 
 }
 
 void add(Memory& mips, std::string rs, std::string rt, std::string rd){
     mips.regi[rd] = mips.regi[rs] + mips.regi[rt];
+    mips.pc += 1;
 }
 
 void sub(Memory& mips, std::string rs, std::string rt, std::string rd){
     mips.regi[rd] = mips.regi[rs] - mips.regi[rt];
+    mips.pc += 1;
 }
 
 void subu(Memory& mips, std::string rs, std::string rt, std::string rd){
     uint32_t rs1 = mips.regi[rs];
     uint32_t rt1 = mips.regi[rt];
     mips.regi[rd] = static_cast<uint32_t>(rs1-rt1);
+    mips.pc += 1;
 }
 
 void And(Memory& mips, std::string rs, std::string rt, std::string rd){
     mips.regi[rd] = mips.regi[rs] & mips.regi[rt];
+    mips.pc += 1;
 }
 
 void Or(Memory& mips, std::string rs, std::string rt, std::string rd){
     mips.regi[rd] = mips.regi[rs] | mips.regi[rt];
+    mips.pc += 1;
 }
 
 void mfhi(Memory& mips, std::string rd){
     mips.regi[rd] = mips.high;
+    mips.pc += 1;
 }
 
 void mflo(Memory& mips, std::string rd){
     mips.regi[rd] = mips.low;
+    mips.pc += 1;
 }
 
 void mthi(Memory& mips, std::string rs){
     mips.high = mips.regi[rs];
+    mips.pc += 1;
 }
 
 void mtlo(Memory& mips, std::string rs){
     mips.low = mips.regi[rs];
+    mips.pc += 1;
 }
 
 void slt(Memory& mips, std::string rs, std::string rt, std::string rd){
@@ -69,6 +80,7 @@ void slt(Memory& mips, std::string rs, std::string rt, std::string rd){
     else{
         mips.regi[rd] = 0;
     }
+    mips.pc += 1;
 }
 
 void sltu(Memory& mips, std::string rs, std::string rt, std::string rd){
@@ -80,19 +92,23 @@ void sltu(Memory& mips, std::string rs, std::string rt, std::string rd){
     else{
         mips.regi[rd] = 0;
     }
+    mips.pc += 1;
 }
 
 void sll(Memory& mips, std::string rt, uint32_t shamt,std::string rd){
     mips.regi[rd] = mips.regi[rt] << shamt;
+    mips.pc += 1;
 }
 
 void srl(Memory& mips, std::string rt, uint32_t shamt,std::string rd){
     uint32_t final = static_cast<uint32_t>(mips.regi[rt]);
     mips.regi[rd] = static_cast<uint32_t>(final >> shamt);
+    mips.pc += 1;
 }
 
 void sra(Memory& mips, std::string rt, uint32_t shamt,std::string rd){
     mips.regi[rd] = (mips.regi[rt] >> shamt);
+    mips.pc += 1;
 }
 
 void mult(Memory& mips, std::string rs, std::string rt){
@@ -101,6 +117,7 @@ void mult(Memory& mips, std::string rs, std::string rt){
     int64_t product = container1*container2;
     mips.high = (product >> 32);
     mips.low = (product << 32) >> 32;
+    mips.pc += 1;
 
 }
 
@@ -110,6 +127,7 @@ void multu(Memory& mips, std::string rs, std::string rt){
     uint64_t product = container1*container2;
     mips.high = (product >> 32);
     mips.low = (product << 32) >> 32;
+    mips.pc += 1;
 
 }
 
@@ -121,6 +139,7 @@ void div(Memory& mips, std::string rt, std::string rs){
     }
     mips.high = dividend % divisor;
     mips.low = dividend/divisor;
+    mips.pc += 1;
 }
 
 void divu(Memory& mips, std::string rt, std::string rs){
@@ -131,6 +150,7 @@ void divu(Memory& mips, std::string rt, std::string rs){
     }
     mips.high = static_cast<uint32_t>(dividend % divisor);
     mips.low = static_cast<uint32_t>(dividend/divisor);
+    mips.pc += 1;
 }
 
 // I-TYPE INSTRUCTIONS
@@ -141,6 +161,7 @@ void lw(Memory& mips, std::string rs, std::string rt, int32_t offset){
         return;
     }
     mips.regi[rt] = mips.mem[addr/4];
+    mips.pc += 1;
 
 }
 
@@ -150,6 +171,7 @@ void sw(Memory& mips, std::string rs, std::string rt, int32_t offset){
         return;
     }
     mips.mem[addr/4] = mips.regi[rt];
+    mips.pc += 1;
 }
 
 
