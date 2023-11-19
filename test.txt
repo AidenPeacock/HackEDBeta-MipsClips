@@ -5,4 +5,5 @@ add $t2, $s3, $t0
 sll $t1, $s3, 2
 sw $s1, 4($s3)
 lw $t5, 4($s3)
+fakeinstruction $t5, 4($s3)
 slt $t3, $s1, $t2

@@ -109,7 +109,12 @@ int main()
                 break;
             }
             // Fetch and execute next instruction
-            executeInstruction(m, *instruction);
+            if (!executeInstruction(m, *instruction))
+            {
+                std::cout << "Instruction not recognized. Skipping to next instruction:" << std::endl;
+                instruction++;
+                continue;
+            }
             std::cout << "Executed Instruction: ";
             displayInstruction(*instruction);
             std::cout << std::endl;
