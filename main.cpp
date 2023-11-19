@@ -5,6 +5,7 @@
 
 #include "instructions.h"
 
+// Initializes memory contents
 Memory::Memory(int var)
 {
     mem.resize(var);
@@ -42,14 +43,15 @@ Memory::Memory(int var)
     regi["$ra"] = 0;
 }
 
+// Displays a help message for the user
 void help()
 {
     std::cout << "Enter one of the following keys..." << std::endl;
-    std::cout << "n: Execute next instruction" << std::endl;
-    std::cout << "e: Exit the program" << std::endl;
-    std::cout << "mw <address>: Displays the word at that memory address" << std::endl;
-    std::cout << "i: Displays the next instruction to be executed" << std::endl;
+    std::cout << "n: Execute next instruction" << std::endl;  
+    std::cout << "i: Displays the next instruction to be executed" << std::endl;  
+    std::cout << "m <address>: Displays the word at that memory address" << std::endl;    
     std::cout << "h: Displays this help message again" << std::endl;
+    std::cout << "e: Exit the program" << std::endl;
 }
 
 int main()
@@ -63,36 +65,39 @@ int main()
     {
         if (s == "n")
         {
-            // m.regi["$s1"] = 1;
+            // For testing
+            m.regi["$s1"] = 1;
+            m.regi["$s0"] = 10;
+
             // Fetch and execute next instruction
             addu(m, "$s0", "$s1", "$s2");
-            std::cout << "Previously Executed Instruction: ";
-            // Placeholder for later
-            std::cout << "addu $s0, $s1, $s2";
-            std::cout << std::endl;
+            std::cout << "Executed Instruction: ";
+            std::cout << "addu $s2, $s0, $s1" << std::endl;
 
             std::cout << "Registers:" << std::endl;
-            int count = 0;
+            int column = 0;
+            // Display registers in 8 rows of 4 columns
             for (auto pair : m.regi)
             {               
                 std::cout << pair.first << ": " << pair.second << " ";
-                count++;
-                if (count == 4)
+                column++;               
+                if (column == 4)
                 {
-                    count = 0;
-                    std::cout << std::endl;
+                     // Start a new row
+                     std::cout << std::endl;
+                    column = 0;                    
                 } 
             }
         }
         else if (s == "i")
         {
-           std::cout << "addu $s0, $s1, $s2" << std::endl;
+           std::cout << "addu $s2, $s0, $s1" << std::endl;
         }
         else if(s == "h")
         {
             help();
         }
-        else if (s == "mw")
+        else if (s == "m")
         {
             int i;
             std::cin >> i;
