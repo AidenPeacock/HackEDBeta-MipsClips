@@ -64,11 +64,38 @@ void executeInstruction(Memory& mips, std::vector<std::string> instruction) {
     } else if (instruction[0] == "lw") {
         lw(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
 
-    } else if (instruction[0] == "addi") {
-        addi(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
+    } else if (instruction[0] == "lb") {
+        lb(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
+
+    } else if (instruction[0] == "lbu") {
+        lbu(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
 
     } else if (instruction[0] == "sw") {
         sw(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
+
+    } else if (instruction[0] == "addi") {
+        addi(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
+
+    } else if (instruction[0] == "addiu") {
+        addiu(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
+
+    } else if (instruction[0] == "slti") {
+        slti(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
+
+    } else if (instruction[0] == "sltiu") {
+        sltiu(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
+
+    } else if (instruction[0] == "andi") {
+        andi(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
+
+    } else if (instruction[0] == "ori") {
+        ori(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
+
+    } else if (instruction[0] == "xori") {
+        xori(mips, instruction[2], instruction[1], (int32_t) stoi(instruction[3]));
+
+    } else if (instruction[0] == "lui") {
+        lui(mips, instruction[1], (int32_t) stoi(instruction[2]));
 
     }
 }

@@ -58,8 +58,26 @@ void divu(Memory& mips, std::string rs, std::string rt);
 
 void lw(Memory& mips, std::string rs, std::string rt, int32_t offset);
 
-void addi(Memory& mips, std::string rs, std::string rt, int32_t imm);
+void lb(Memory& mips, std::string rs, std::string rt, int32_t offset);
+
+void lbu(Memory& mips, std::string rs, std::string rt, int32_t offset);
 
 void sw(Memory& mips, std::string rs, std::string rt, int32_t offset);
+
+void addi(Memory& mips, std::string rs, std::string rt, int32_t imm);
+
+void addiu(Memory& mips, std::string rs, std::string rt, uint32_t imm);
+
+void slti(Memory& mips, std::string rs, std::string rt, int32_t imm);
+
+void sltiu(Memory& mips, std::string rs, std::string rt, uint32_t imm);
+
+void andi(Memory& mips, std::string rs, std::string rt, uint32_t imm);
+
+void ori(Memory& mips, std::string rs, std::string rt, uint32_t imm);
+
+void xori(Memory& mips, std::string rs, std::string rt, uint32_t imm);
+
+void lui(Memory& mips, std::string rt, int32_t imm);
 
 #endif
