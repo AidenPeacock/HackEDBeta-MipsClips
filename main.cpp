@@ -9,6 +9,42 @@ struct Memory{
     int32_t high;
     int32_t low;
     uint32_t pc;
+    // Constructor for memory, which sets the size of the memory and initializes registers to 0
+    Memory(int var) {
+        mem.resize(var);
+        regi["$zero"] = 0;
+        regi["$at"] = 0;
+        regi["$v0"] = 0;
+        regi["$v1"] = 0;
+        regi["$a0"] = 0;
+        regi["$a1"] = 0;
+        regi["$a2"] = 0;
+        regi["$a3"] = 0;
+        regi["$t0"] = 0;
+        regi["$t1"] = 0;
+        regi["$t2"] = 0;
+        regi["$t3"] = 0;
+        regi["$t4"] = 0;
+        regi["$t5"] = 0;
+        regi["$t6"] = 0;
+        regi["$t7"] = 0;
+        regi["$s0"] = 0;
+        regi["$s1"] = 0;
+        regi["$s2"] = 0;
+        regi["$s3"] = 0;
+        regi["$s4"] = 0;
+        regi["$s5"] = 0;
+        regi["$s6"] = 0;
+        regi["$s7"] = 0;
+        regi["$t8"] = 0;
+        regi["$t9"] = 0;
+        regi["$k0"] = 0;
+        regi["$k1"] = 0;
+        regi["$gp"] = 0;
+        regi["$sp"] = 0;
+        regi["$fp"] = 0;
+        regi["$ra"] = 0;
+    }
 };
 
 // R-TYPE INSTRUCTIONS
@@ -181,41 +217,7 @@ void sw(Memory& mips, std::string rs, std::string rt, int32_t offset){
 
 
 int main(){
-    Memory m;
-    int var = 0x0FFFFFFF;
-    m.mem.resize(var);
-    m.regi["$zero"] = 0;
-    m.regi["$at"] = 0;
-    m.regi["$v0"] = 0;
-    m.regi["$v1"] = 0;
-    m.regi["$a0"] = 0;
-    m.regi["$a1"] = 0;
-    m.regi["$a2"] = 0;
-    m.regi["$a3"] = 0;
-    m.regi["$t0"] = 0;
-    m.regi["$t1"] = 0;
-    m.regi["$t2"] = 0;
-    m.regi["$t3"] = 0;
-    m.regi["$t4"] = 0;
-    m.regi["$t5"] = 0;
-    m.regi["$t6"] = 0;
-    m.regi["$t7"] = 0;
-    m.regi["$s0"] = 0xF0000000;
-    m.regi["$s1"] = 0x00000000;
-    m.regi["$s2"] = 0;
-    m.regi["$s3"] = 0;
-    m.regi["$s4"] = 0;
-    m.regi["$s5"] = 0;
-    m.regi["$s6"] = 0;
-    m.regi["$s7"] = 0;
-    m.regi["$t8"] = 0;
-    m.regi["$t9"] = 0;
-    m.regi["$k0"] = 0;
-    m.regi["$k1"] = 0;
-    m.regi["$gp"] = 0;
-    m.regi["$sp"] = 0;
-    m.regi["$fp"] = 0;
-    m.regi["$ra"] = 0;
+    Memory m(0x0FFFFFFF);
     addu(m, "$s0", "$s1", "$s2");
     std::cout << (m.regi["$s2"]) << std::endl;
 }
