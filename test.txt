@@ -1,6 +1,8 @@
+addi $t0, $t1, 1
+addi $s3, $s3, 4
+addi $s1, $s3, -35
+add $t2, $s3, $t0
 sll $t1, $s3, 2
-add $t1, $t1, $s6
-lw $t0, 0($t1)
-bne $t0, $s5, Exit
-addi $s3, $s3, 1
-j Loop
+sw $s1, 4($s3)
+lw $t5, 4($s3)
+slt $t3, $s1, $t2
