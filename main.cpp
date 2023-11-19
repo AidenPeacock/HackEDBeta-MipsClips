@@ -49,19 +49,45 @@ Memory::Memory(int var)
 void help()
 {
     std::cout << "Enter one of the following keys..." << std::endl;
-    std::cout << "n: Execute next instruction" << std::endl;  
-    std::cout << "i: Displays the next instruction to be executed" << std::endl;  
-    std::cout << "m <address>: Displays the word at that memory address" << std::endl;    
+    std::cout << "n: Execute next instruction" << std::endl;
+    std::cout << "i: Displays the next instruction to be executed" << std::endl;
+    std::cout << "m <address>: Displays the word at that memory address" << std::endl;
     std::cout << "h: Displays this help message again" << std::endl;
     std::cout << "e: Exit the program" << std::endl;
 }
 
+void displayInstruction(std::vector<std::string> instruction)
+{
+    if (instruction[0] == "sw" || instruction[0] == "lw")
+    {
+        std::string s = instruction[0] + " " + instruction[1] + ", " + instruction[3] + "(" + instruction[2] + ")";
+        std::cout << s;
+    }
+    else
+    {
+        for (int i = 0; i < instruction.size(); i++)
+        {
+            if (i == 0)
+            {
+                std::cout << instruction[i];
+            }
+            else if (i == 1)
+            {
+                std::cout << " " << instruction[i];
+            }
+            else
+            {
+                std::cout << ", " << instruction[i];
+            }
+        }
+    }
+}
 int main()
 {
     std::cout << "Welcome to the MIPS Debugger. Please enter the name of the text file that contains the MIPS assembly:" << std::endl;
     std::string fileName;
     std::cin >> fileName;
-    if(fileName.find(".txt") == std::string::npos)
+    if (fileName.find(".txt") == std::string::npos)
     {
         fileName += ".txt";
     }
@@ -69,7 +95,7 @@ int main()
     auto instruction = instructions.begin();
 
     Memory m(0x0FFFFFFF);
-    
+
     help();
     std::string s;
     std::cin >> s;
@@ -78,17 +104,14 @@ int main()
         if (s == "n")
         {
 
-            if(instruction == instructions.end())
+            if (instruction == instructions.end())
             {
                 break;
             }
             // Fetch and execute next instruction
             executeInstruction(m, *instruction);
             std::cout << "Executed Instruction: ";
-            for (auto operand : *instruction)
-            {
-                std::cout << operand << " ";
-            }
+            displayInstruction(*instruction);
             std::cout << std::endl;
 
             std::cout << "Registers:" << std::endl;
@@ -115,10 +138,7 @@ int main()
             }
             else
             {
-                for (auto operand : *instruction)
-                {
-                    std::cout << operand << " ";
-                }
+                displayInstruction(*instruction);
             }
 
             std::cout << std::endl;
