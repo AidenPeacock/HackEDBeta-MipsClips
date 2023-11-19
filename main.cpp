@@ -58,23 +58,27 @@ void help()
 
 int main()
 {
-    std::vector instructions = readProg("test.txt");
+    auto instructions = readProg("test.txt");
     auto instruction = instructions.begin();
 
     Memory m(0x0FFFFFFF);
-    // Already reads the file on startup so this doesn't mean much
     std::cout << "Welcome to the MIPS Debugger. Make sure the text file containing the MIPS code is in the same directory." << std::endl;
     help();
     std::string s;
     std::cin >> s;
-    while((s != "e") && instruction != instructions.end())
+    while (s != "e")
     {
         if (s == "n")
         {
+
+            if(instruction == instructions.end())
+            {
+                break;
+            }
             // Fetch and execute next instruction
             executeInstruction(m, *instruction);
             std::cout << "Executed Instruction: ";
-            for(auto operand : *instruction)
+            for (auto operand : *instruction)
             {
                 std::cout << operand << " ";
             }
@@ -84,27 +88,35 @@ int main()
             int column = 0;
             // Display registers in 8 rows of 4 columns
             for (std::map<std::string, int>::iterator i = m.regi.begin(); i != m.regi.end(); i++)
-            {               
+            {
                 std::cout << i->first << ": " << i->second << " ";
-                column++;               
+                column++;
                 if (column == 4)
                 {
-                     // Start a new row
-                     std::cout << std::endl;
-                    column = 0;                    
-                } 
+                    // Start a new row
+                    std::cout << std::endl;
+                    column = 0;
+                }
             }
             instruction++;
         }
         else if (s == "i")
         {
-            for(auto operand : *instruction)
+            if (instruction == instructions.end())
             {
-                std::cout << operand << " ";
+                std::cout << "No more instructions left to execute";
             }
+            else
+            {
+                for (auto operand : *instruction)
+                {
+                    std::cout << operand << " ";
+                }
+            }
+
             std::cout << std::endl;
         }
-        else if(s == "h")
+        else if (s == "h")
         {
             help();
         }
@@ -112,7 +124,7 @@ int main()
         {
             int i;
             std::cin >> i;
-            std::cout << m.mem[i/4] << std::endl;
+            std::cout << m.mem[i / 4] << std::endl;
         }
         std::cin >> s;
     }
