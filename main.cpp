@@ -31,6 +31,11 @@ void add(Memory& mips, std::string rs, std::string rt, std::string rd){
     mips.pc += 1;
 }
 
+void addi(Memory& mips, std::string rs, std::string rt, int32_t imm){
+    mips.regi[rt] = mips.regi[rs] + imm;
+    mips.pc += 1;
+}
+
 void sub(Memory& mips, std::string rs, std::string rt, std::string rd){
     mips.regi[rd] = mips.regi[rs] - mips.regi[rt];
     mips.pc += 1;
