@@ -47,9 +47,9 @@ void mult(Memory& mips, std::string rs, std::string rt);
 
 void multu(Memory& mips, std::string rs, std::string rt);
 
-void div(Memory& mips, std::string rt, std::string rs);
+void div(Memory& mips, std::string rs, std::string rt);
 
-void divu(Memory& mips, std::string rt, std::string rs);
+void divu(Memory& mips, std::string rs, std::string rt);
 
 // I-TYPE INSTRUCTIONS
 
