@@ -4,6 +4,8 @@
 #include <string>
 
 #include "instructions.h"
+#include "readInstructs.h"
+#include "runInstruction.h"
 
 // Initializes memory contents
 Memory::Memory(int var)
@@ -18,20 +20,20 @@ Memory::Memory(int var)
     regi["$a2"] = 0;
     regi["$a3"] = 0;
     regi["$t0"] = 0;
-    regi["$t1"] = 0;
-    regi["$t2"] = 0;
-    regi["$t3"] = 0;
+    regi["$t1"] = 1;
+    regi["$t2"] = 3;
+    regi["$t3"] = 10;
     regi["$t4"] = 0;
-    regi["$t5"] = 0;
+    regi["$t5"] = 90;
     regi["$t6"] = 0;
     regi["$t7"] = 0;
     regi["$s0"] = 0;
     regi["$s1"] = 0;
-    regi["$s2"] = 0;
+    regi["$s2"] = 7;
     regi["$s3"] = 0;
     regi["$s4"] = 0;
     regi["$s5"] = 0;
-    regi["$s6"] = 0;
+    regi["$s6"] = 3;
     regi["$s7"] = 0;
     regi["$t8"] = 0;
     regi["$t9"] = 0;
@@ -56,12 +58,15 @@ void help()
 
 int main()
 {
+    std::vector instructions = readProg("test.txt");
+    auto instruction = instructions.begin();
+
     Memory m(0x0FFFFFFF);
     std::cout << "Welcome to the MIPS Debugger." << std::endl;
     help();
     std::string s;
     std::cin >> s;
-    while (s != "e")
+    while (s != "e" || instruction != instructions.end())
     {
         if (s == "n")
         {
@@ -70,9 +75,12 @@ int main()
             m.regi["$s0"] = 10;
 
             // Fetch and execute next instruction
-            addu(m, "$s0", "$s1", "$s2");
+            executeInstruction(m, *instruction);
             std::cout << "Executed Instruction: ";
-            std::cout << "addu $s2, $s0, $s1" << std::endl;
+            for(auto operand : *instruction)
+            {
+                std::cout << operand << " ";
+            }
 
             std::cout << "Registers:" << std::endl;
             int column = 0;
@@ -88,10 +96,15 @@ int main()
                     column = 0;                    
                 } 
             }
+            instruction++;
         }
         else if (s == "i")
         {
-           std::cout << "addu $s2, $s0, $s1" << std::endl;
+            for(auto operand : *instruction)
+            {
+                std::cout << operand << " ";
+            }
+            std::cout << std::endl;
         }
         else if(s == "h")
         {
