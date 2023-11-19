@@ -80,7 +80,7 @@ void slti(Memory& mips, std::string rs, std::string rt, int32_t imm){
 }
 
 void sltiu(Memory& mips, std::string rs, std::string rt, uint32_t imm){
-    mips.regi[rt] = mips.regi[rs] < imm;
+    mips.regi[rt] = (uint32_t)mips.regi[rs] < imm;
     mips.pc += 1;
 }
 
