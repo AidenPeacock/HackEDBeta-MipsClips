@@ -77,9 +77,9 @@ int main()
             std::cout << "Registers:" << std::endl;
             int column = 0;
             // Display registers in 8 rows of 4 columns
-            for (auto pair : m.regi)
+            for (std::map<std::string, int>::iterator i = m.regi.begin(); i != m.regi.end(); i++)
             {               
-                std::cout << pair.first << ": " << pair.second << " ";
+                std::cout << i->first << ": " << i->second << " ";
                 column++;               
                 if (column == 4)
                 {
