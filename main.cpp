@@ -58,14 +58,14 @@ void help()
 
 void displayInstruction(std::vector<std::string> instruction)
 {
-    if (instruction[0] == "sw" || instruction[0] == "lw")
+    if (instruction[0] == "sw" || instruction[0] == "lw" || instruction[0] == "lb" || instruction[0] == "lbu")
     {
         std::string s = instruction[0] + " " + instruction[1] + ", " + instruction[3] + "(" + instruction[2] + ")";
         std::cout << s;
     }
     else
     {
-        for (int i = 0; i < instruction.size(); i++)
+        for (unsigned long int i = 0; i < instruction.size(); i++)
         {
             if (i == 0)
             {
