@@ -70,10 +70,6 @@ int main()
     {
         if (s == "n")
         {
-            // For testing
-            m.regi["$s1"] = 1;
-            m.regi["$s0"] = 10;
-
             // Fetch and execute next instruction
             executeInstruction(m, *instruction);
             std::cout << "Executed Instruction: ";
@@ -81,6 +77,7 @@ int main()
             {
                 std::cout << operand << " ";
             }
+            std::cout << std::endl;
 
             std::cout << "Registers:" << std::endl;
             int column = 0;
