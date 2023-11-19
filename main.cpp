@@ -4,7 +4,7 @@
 #include <string>
 
 #include "instructions.h"
-#include "readInstructs.h"
+#include "readInstructions.h"
 #include "runInstruction.h"
 
 // Initializes memory contents
