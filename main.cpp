@@ -58,11 +58,18 @@ void help()
 
 int main()
 {
-    auto instructions = readProg("test.txt");
+    std::cout << "Welcome to the MIPS Debugger. Please enter the name of the text file that contains the MIPS assembly:" << std::endl;
+    std::string fileName;
+    std::cin >> fileName;
+    if(fileName.find(".txt") == std::string::npos)
+    {
+        fileName += ".txt";
+    }
+    auto instructions = readProg(fileName);
     auto instruction = instructions.begin();
 
     Memory m(0x0FFFFFFF);
-    std::cout << "Welcome to the MIPS Debugger. Make sure the text file containing the MIPS code is in the same directory." << std::endl;
+    
     help();
     std::string s;
     std::cin >> s;
