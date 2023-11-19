@@ -20,20 +20,20 @@ Memory::Memory(int var)
     regi["$a2"] = 0;
     regi["$a3"] = 0;
     regi["$t0"] = 0;
-    regi["$t1"] = 1;
-    regi["$t2"] = 3;
-    regi["$t3"] = 10;
+    regi["$t1"] = 0;
+    regi["$t2"] = 0;
+    regi["$t3"] = 0;
     regi["$t4"] = 0;
-    regi["$t5"] = 90;
+    regi["$t5"] = 0;
     regi["$t6"] = 0;
     regi["$t7"] = 0;
     regi["$s0"] = 0;
     regi["$s1"] = 0;
-    regi["$s2"] = 7;
+    regi["$s2"] = 0;
     regi["$s3"] = 0;
     regi["$s4"] = 0;
     regi["$s5"] = 0;
-    regi["$s6"] = 3;
+    regi["$s6"] = 0;
     regi["$s7"] = 0;
     regi["$t8"] = 0;
     regi["$t9"] = 0;
@@ -66,7 +66,7 @@ int main()
     help();
     std::string s;
     std::cin >> s;
-    while (s != "e" || instruction != instructions.end())
+    while((s != "e") && instruction != instructions.end())
     {
         if (s == "n")
         {
