@@ -62,7 +62,8 @@ int main()
     auto instruction = instructions.begin();
 
     Memory m(0x0FFFFFFF);
-    std::cout << "Welcome to the MIPS Debugger." << std::endl;
+    // Already reads the file on startup so this doesn't mean much
+    std::cout << "Welcome to the MIPS Debugger. Make sure the text file containing the MIPS code is in the same directory." << std::endl;
     help();
     std::string s;
     std::cin >> s;
