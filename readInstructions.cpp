@@ -1,4 +1,4 @@
-#include "readInstructs.h"
+#include "readInstructions.h"
 
 // Parse a single line of MIPS code into its parameters.
 // The input parameter is a reference to the to be parsed.
