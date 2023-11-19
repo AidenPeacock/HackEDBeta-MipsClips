@@ -11,6 +11,8 @@ void lw(Memory& mips, std::string rs, std::string rt, int32_t offset){
     if (addr%4 != 0){
         return;
     }
+    // Memory is emulated as collection of int32 so addresses must be divided by 4 to
+    // access required location
     mips.regi[rt] = mips.mem[addr/4];
     mips.pc += 1;
 
@@ -40,7 +42,6 @@ void lbu(Memory& mips, std::string rs, std::string rt, int32_t offset){
     uint32_t addr = offset + mips.regi[rs];
     int32_t word = mips.mem[addr/4];
     if (addr%4 == 0){
-        // Mips is little endian
         mips.regi[rt] =  (u_int8_t)((word & 0xFF000000) >> 24);
     }
     if (addr%4 == 1){

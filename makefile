@@ -1,5 +1,5 @@
 CC = g++
-CC_FLAGS = -g -Wall -std=c++11
+CC_FLAGS = -std=c++11
 
 BINARIES = main
 OBJS = I-Type.o R-Type.o readInstructions.o runInstruction.o main.o

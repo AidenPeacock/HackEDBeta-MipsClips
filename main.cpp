@@ -56,6 +56,7 @@ void help()
     std::cout << "e: Exit the program" << std::endl;
 }
 
+// Displays an instruction according to how it should look
 void displayInstruction(std::vector<std::string> instruction)
 {
     if (instruction[0] == "sw" || instruction[0] == "lw" || instruction[0] == "lb" || instruction[0] == "lbu")
@@ -87,6 +88,7 @@ int main()
     std::cout << "Welcome to the MIPS Debugger. Please enter the name of the text file that contains the MIPS assembly:" << std::endl;
     std::string fileName;
     std::cin >> fileName;
+    // Add extension if it wasn't specified
     if (fileName.find(".txt") == std::string::npos)
     {
         fileName += ".txt";
@@ -103,7 +105,6 @@ int main()
     {
         if (s == "n")
         {
-
             if (instruction == instructions.end())
             {
                 break;

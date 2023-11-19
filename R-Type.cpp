@@ -7,7 +7,7 @@
 
 // C++ equivalent of R-Type MIPS instructions.
 void Xor(Memory& mips, std::string rs, std::string rt, std::string rd){
-    mips.regi[rd] = mips.regi[rt]^mips.regi[rs];
+    mips.regi[rd] = mips.regi[rt] ^ mips.regi[rs];
     mips.pc += 1;
 }
 
