@@ -1,9 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include <algorithm>
-#include <fstream>
+#include "readInstructs.h"
 
 // Parse a single line of MIPS code into its parameters.
 // The input parameter is a reference to the to be parsed.
@@ -68,19 +63,4 @@ std::vector<std::vector<std::string> > readProg(std::string filename) {
     }
 
     return instructions;
-}
-
-int main() {
-
-    // Test code
-    // std::vector<std::vector<std::string> > instructions = readProg("test.txt");
-
-    // for (int i = 0; i < instructions.size(); i++) {
-    //     for (int j = 0; j < instructions[i].size(); j++) {
-    //         std::cout << instructions[i][j] << " ";
-    //     }
-    //     std::cout << std::endl;
-    // }
-
-    return 0;
 }
