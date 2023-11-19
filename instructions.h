@@ -2,6 +2,9 @@
 #include <vector>
 #include <map>
 
+#ifndef INSTRUCTIONS_H
+#define INSTRUCTIONS_H
+
 struct Memory {
     std::vector<int32_t> mem;
     std::map<std::string, int32_t> regi;
@@ -59,3 +62,4 @@ void addi(Memory& mips, std::string rs, std::string rt, int32_t imm);
 
 void sw(Memory& mips, std::string rs, std::string rt, int32_t offset);
 
+#endif

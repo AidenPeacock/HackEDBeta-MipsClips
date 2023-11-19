@@ -10,7 +10,6 @@ void Xor(Memory& mips, std::string rs, std::string rt, std::string rd){
     mips.pc += 1;
 }
 
-
 void addu(Memory& mips, std::string rs, std::string rt, std::string rd){
     uint32_t rs1 = (mips.regi[rs]);
     uint32_t rt1 = (mips.regi[rt]);
@@ -23,8 +22,6 @@ void add(Memory& mips, std::string rs, std::string rt, std::string rd){
     mips.regi[rd] = mips.regi[rs] + mips.regi[rt];
     mips.pc += 1;
 }
-
-
 
 void sub(Memory& mips, std::string rs, std::string rt, std::string rd){
     mips.regi[rd] = mips.regi[rs] - mips.regi[rt];
