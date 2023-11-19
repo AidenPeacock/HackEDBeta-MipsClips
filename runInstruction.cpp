@@ -1,5 +1,9 @@
 #include "runInstruction.h"
 
+// Determines which instruction to run based on the string (the first element in the vector).
+// The function is then called using the appropriate parameters found in the rest of the vector.
+// The memory struct and the vector of parameters are used as input parameters for the function.
+// There is no return value, since the function already does everything that is needed.
 void executeInstruction(Memory& mips, std::vector<std::string> instruction) {
     if (instruction[0] == "xor") {
         Xor(mips, instruction[2], instruction[3], instruction[1]);

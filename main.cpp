@@ -7,7 +7,7 @@
 #include "readInstructions.h"
 #include "runInstruction.h"
 
-// Initializes memory contents
+// Initializes memory size according to the constructor input parameter, and sets all registers to 0.
 Memory::Memory(int var)
 {
     mem.resize(var);

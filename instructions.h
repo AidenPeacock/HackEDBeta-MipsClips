@@ -13,6 +13,7 @@ struct Memory {
     uint32_t pc;
     Memory(int var);
 };
+
 // R-TYPE INSTRUCTIONS
 void Xor(Memory& mips, std::string rs, std::string rt, std::string rd);
 
@@ -55,7 +56,6 @@ void div(Memory& mips, std::string rs, std::string rt);
 void divu(Memory& mips, std::string rs, std::string rt);
 
 // I-TYPE INSTRUCTIONS
-
 void lw(Memory& mips, std::string rs, std::string rt, int32_t offset);
 
 void lb(Memory& mips, std::string rs, std::string rt, int32_t offset);

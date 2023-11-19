@@ -50,7 +50,7 @@ std::vector<std::string> parseLine(std::string &line) {
 
 // Read each line of the MIPS program from a file.
 // The input parameter is the name of the file with the MIPS program.
-// The output is a vector of vectors of strings (possibly temporary).
+// The output is a vector of vectors of strings. Each vector of strings contains one line of MIPS code.
 std::vector<std::vector<std::string> > readProg(std::string filename) {
     std::ifstream file(filename);
     std::string line;

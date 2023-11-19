@@ -5,6 +5,7 @@
 
 #include "instructions.h"
 
+// C++ equivalent of I-Type MIPS instructions.
 void lw(Memory& mips, std::string rs, std::string rt, int32_t offset){
     uint32_t addr = offset + mips.regi[rs];
     if (addr%4 != 0){
