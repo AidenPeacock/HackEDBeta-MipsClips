@@ -1,5 +1,5 @@
-#ifndef READINSTRUCTS_H
-#define READINSTRUCTS_H
+#ifndef READINSTRUCTIONS_H
+#define READINSTRUCTIONS_H
 
 #include <iostream>
 #include <string>
